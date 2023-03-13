@@ -36,6 +36,7 @@ public class IndexServlet extends HttpServlet {
         EntityManager em = DBUtil.createEntityManager();
         List<Task> tasks = em.createNamedQuery("getAllTask", Task.class).getResultList();
         request.setAttribute("tasks",tasks);
+        em.close();
         RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/views/tasks/index.jsp");
         rd.forward(request, response);
     }
